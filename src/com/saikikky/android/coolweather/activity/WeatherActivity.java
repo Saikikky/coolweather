@@ -1,6 +1,7 @@
 package com.saikikky.android.coolweather.activity;
 
 import com.saikikky.android.coolweather.R;
+import com.saikikky.android.coolweather.service.AutoUpdateService;
 import com.saikikky.android.coolweather.util.HttpCallbackListener;
 import com.saikikky.android.coolweather.util.HttpUtil;
 import com.saikikky.android.coolweather.util.Utility;
@@ -147,6 +148,10 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		currentDateText.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
+		
+		//启动AutoUpdateService服务的代码
+		Intent i = new Intent(this, AutoUpdateService.class);
+		startService(i);
 	}
 
 	@Override
